@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">  
+</head>
+
+<body>
+    <head>
+        <h1 class="skyblue">Library</h1>
+        <div class="navbar">
+            <div class="navbar-in">
+                <div class="navbar-item active"><a href="./books.html">Books</a></div>
+                <div class="navbar-item"><a href="./visitors.html">Visitors</a></div>
+                <div class="navbar-item"><a href="./cards.html">Cards</a></div>
+                <div class="navbar-item"><a href="./statistics.html">Statistics</a></div>
+            </div>
+        </div>
+    </head>
+
+    <body>
+        <div class="container">
+            <h3 class="skyblue">All books:</h3>
+            <button type="button" class="new" data-bs-toggle="modal" data-bs-target="#myModal" id="newBook">New book</button>
+        </div>
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Cоздание книги</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="inputsCreateBooks">
+                        <div class="modal-input">
+                            <label for="title">Title: </label>
+                            <input type="text" id="title" name="title">
+                        </div>
+                        <div class="modal-input">
+                            <label for="author">Author: </label>
+                            <input type="text" id="author" name="author">
+                        </div>
+                        <div class="modal-input">
+                            <label for="publishingYear">Publishing year: </label>
+                            <input type="text" id="publishingYear" name="publishingYear">
+                        </div>
+                        <div class="modal-input">
+                            <label for="publisherName">Publisher name: </label>
+                            <input type="text" id="publisherName" name="publisherName">
+                        </div>
+                        <div class="modal-input">
+                            <label for="pages">Number of pages: </label>
+                            <input type="text" id="pages" name="pages">
+                        </div>
+                        <div class="modal-input">
+                            <label for="count">Count: </label>
+                            <input type="text" id="count" name="count">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="createBook">Создать</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="closeBook">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Изменить книгу</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="inputsChangeBooks">
+                        <div class="modal-input">
+                            <label for="titleChange">Title: </label>
+                            <input type="text" id="titleChange" name="titleChange">
+                        </div>
+                        <div class="modal-input">
+                            <label for="authorChange">Author: </label>
+                            <input type="text" id="authorChange" name="authorChange">
+                        </div>
+                        <div class="modal-input">
+                            <label for="publishingYearChange">Publishing year: </label>
+                            <input type="text" id="publishingYearChange" name="publishingYearChange">
+                        </div>
+                        <div class="modal-input">
+                            <label for="publisherNameChange">Publisher name: </label>
+                            <input type="text" id="publisherNameChange" name="publisherNameChange">
+                        </div>
+                        <div class="modal-input">
+                            <label for="pagesChange">Number of pages: </label>
+                            <input type="text" id="pagesChange" name="pagesChange">
+                        </div>
+                        <div class="modal-input">
+                            <label for="countChange">Count: </label>
+                            <input type="text" id="countChange" name="countChange">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeChangeBook">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveChangesBook">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Удаление книги</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                  Вы точно хотите удалить книгу?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Нет</button>
+                  <button type="button" class="btn btn-danger" id="deleteBook" data-bs-dismiss="modal">Да</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="container">
+            <table id="tableBook">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Author's name</th>
+                        <th>Publishing year</th>
+                        <th>Publisher name</th>
+                        <th>Number of pages</th>
+                        <th>Count</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyBooks"></tbody>
+            </table>
+        </div>
+    </body>
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="book.js"></script>
+</body>
+</html>
